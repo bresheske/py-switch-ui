@@ -1,0 +1,15 @@
+﻿<Page
+    x:Class="LightSwitch.Ui.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LightSwitch.Ui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Black" ManipulationMode="All" ManipulationStarted="ManipulationStarted" ManipulationCompleted="ManipulationCompleted">
+        <TextBlock x:Name="title" HorizontalAlignment="Center" Margin="0,50,0,0" TextWrapping="Wrap" Text="Master Bedroom" VerticalAlignment="Top" Foreground="#FF6AB5D8" FontSize="29.333"/>
+        <Rectangle x:Name="outerrect" Stroke="#FFA4A4A4" Margin="10" StrokeThickness="3"/>
+
+    </Grid>
+</Page>
