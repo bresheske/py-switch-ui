@@ -150,11 +150,16 @@ namespace LightSwitch.Ui
         private void ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
             _manipstarted = e.Position;
+            clickellipse.Width = 0;
+            clickellipse.Height = 0;
+            clickellipse.Margin = new Thickness(e.Position.X, e.Position.Y, 0, 0);
         }
 
         private void ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
             HandleToggleEvent(_manipstarted, e.Position);
+            clickellipse.Height = 0;
+            clickellipse.Width = 0;
         }
 
         private void ToggleScreen(object sender, RoutedEventArgs e)
@@ -162,6 +167,15 @@ namespace LightSwitch.Ui
             var nextstate = _currentstate == "Base" ? "Rotated" : "Base";
             VisualStateManager.GoToState(this, nextstate, true);
             _currentstate = nextstate;
+        }
+
+        private void ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
+        {
+            var distance = GetDistance(_manipstarted, e.Position);
+            var newpos = new Thickness(_manipstarted.X - distance / 2d, _manipstarted.Y - distance / 2d, 0, 0);
+            clickellipse.Margin = newpos;
+            clickellipse.Height = distance;
+            clickellipse.Width = distance;
         }
     }
 }

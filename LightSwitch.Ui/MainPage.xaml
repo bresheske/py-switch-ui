@@ -34,7 +34,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Grid x:Name="grid" Background="Black" ManipulationMode="All" ManipulationStarted="ManipulationStarted" ManipulationCompleted="ManipulationCompleted" Width="800" Height="480" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid x:Name="grid" Background="Black" ManipulationMode="All" ManipulationStarted="ManipulationStarted" ManipulationCompleted="ManipulationCompleted" Width="800" Height="480" HorizontalAlignment="Center" VerticalAlignment="Center" ManipulationDelta="ManipulationDelta">
             <Grid.Projection>
                 <PlaneProjection/>
             </Grid.Projection>
@@ -44,6 +44,7 @@
             <TextBlock x:Name="title" HorizontalAlignment="Center" Margin="0,50,0,0" TextWrapping="Wrap" Text="Master Bedroom" VerticalAlignment="Top" Foreground="#FF6AB5D8" FontSize="29.333"/>
             <Button x:Name="button" Content="@" VerticalAlignment="Top" BorderBrush="#FF6CBCFF" Foreground="#FF68D69F" HorizontalAlignment="Right" Margin="0,20,20,0" FontSize="21" Click="ToggleScreen"/>
             <Rectangle x:Name="outerrect" Stroke="#FFA4A4A4" Margin="10" StrokeThickness="3"/>
+            <Ellipse x:Name="clickellipse" HorizontalAlignment="Left" Stroke="#FFA4A4A4" StrokeThickness="3" Width="0" Fill="#FF6A7EFF" Opacity="0.3" Margin="168,194,0,0" Height="0" VerticalAlignment="Top"/>
 
         </Grid>
     </Grid>
