@@ -35,6 +35,9 @@ namespace LightSwitch.Ui
         private Point _manipstarted;
         private SwitchResponse _status;
         private DispatcherTimer _timer;
+        private string _currentstate = "Base";
+        private double _currentWidth = 0;
+        private double _currentHeight = 0;
         private Switch _switch = new Switch()
         {
             Pin = 23,
@@ -55,6 +58,7 @@ namespace LightSwitch.Ui
                 UpdateStatus();
             };
             _timer.Start();
+
         }
 
         /// <summary>
@@ -151,6 +155,13 @@ namespace LightSwitch.Ui
         private void ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
             HandleToggleEvent(_manipstarted, e.Position);
+        }
+
+        private void ToggleScreen(object sender, RoutedEventArgs e)
+        {
+            var nextstate = _currentstate == "Base" ? "Rotated" : "Base";
+            VisualStateManager.GoToState(this, nextstate, true);
+            _currentstate = nextstate;
         }
     }
 }

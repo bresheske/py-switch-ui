@@ -1,15 +1,50 @@
 ﻿<Page
-    x:Class="LightSwitch.Ui.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:LightSwitch.Ui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:Foundation="using:Windows.Foundation"
+    x:Class="LightSwitch.Ui.MainPage"
+    mc:Ignorable="d" Width="800" Height="480">
 
-    <Grid Background="Black" ManipulationMode="All" ManipulationStarted="ManipulationStarted" ManipulationCompleted="ManipulationCompleted">
-        <TextBlock x:Name="title" HorizontalAlignment="Center" Margin="0,50,0,0" TextWrapping="Wrap" Text="Master Bedroom" VerticalAlignment="Top" Foreground="#FF6AB5D8" FontSize="29.333"/>
-        <Rectangle x:Name="outerrect" Stroke="#FFA4A4A4" Margin="10" StrokeThickness="3"/>
+    <Grid x:Name="rootgrid" Background="Black">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0:0:1">
+                        <VisualTransition.GeneratedEasingFunction>
+                            <CircleEase EasingMode="EaseOut"/>
+                        </VisualTransition.GeneratedEasingFunction>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="Base">
+                    <VisualState.Setters>
+                        <Setter Target="grid.(FrameworkElement.Width)" Value="800"/>
+                        <Setter Target="grid.(FrameworkElement.Height)" Value="480"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Rotated">
+                    <VisualState.Setters>
+                        <Setter Target="grid.(UIElement.Projection).(PlaneProjection.RotationZ)" Value="90"/>
+                        <Setter Target="grid.(FrameworkElement.Width)" Value="480"/>
+                        <Setter Target="grid.(FrameworkElement.Height)" Value="800"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
 
+        <Grid x:Name="grid" Background="Black" ManipulationMode="All" ManipulationStarted="ManipulationStarted" ManipulationCompleted="ManipulationCompleted" Width="800" Height="480" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.Projection>
+                <PlaneProjection/>
+            </Grid.Projection>
+            <Grid.RenderTransform>
+                <CompositeTransform/>
+            </Grid.RenderTransform>
+            <TextBlock x:Name="title" HorizontalAlignment="Center" Margin="0,50,0,0" TextWrapping="Wrap" Text="Master Bedroom" VerticalAlignment="Top" Foreground="#FF6AB5D8" FontSize="29.333"/>
+            <Button x:Name="button" Content="@" VerticalAlignment="Top" BorderBrush="#FF6CBCFF" Foreground="#FF68D69F" HorizontalAlignment="Right" Margin="0,20,20,0" FontSize="21" Click="ToggleScreen"/>
+            <Rectangle x:Name="outerrect" Stroke="#FFA4A4A4" Margin="10" StrokeThickness="3"/>
+
+        </Grid>
     </Grid>
 </Page>
