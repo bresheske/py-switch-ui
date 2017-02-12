@@ -86,7 +86,7 @@ namespace LightSwitch.Ui
         private async void HandleToggleEvent(Point start, Point end)
         {
             var distance = GetDistance(start, end);
-            if (distance < 30)
+            if (distance < 100)
                 return;
 
             // trigger the event.
